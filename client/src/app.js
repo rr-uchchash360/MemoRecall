@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { useDispatch} from 'react-redux';
 
+import { getPosts } from './actions/posts'
 import memorecall from './images/memorecall.png'
 import Posts from './components/posts/posts'
 import Form from './components/form/form'
-import useStyles from './styles';
+import useStyles from './styles'
+
 
 const App = () => {
     const styleClasses = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPosts());
+    }, [dispatch]);
+
     return (
         <Container maxWidth="lg">
             <AppBar className={styleClasses.appBar} position="static" color="inherit">
-                <Typography className={styleClasses.heading} varaint="h2" aligh="center">
+                <Typography classname={styleClasses.heading} varaint="h2" aligh="center">
                     MemoRecall
                 </Typography>
-                <img src={memorecall} alt="memorecall" height="75" />
+                <img className={styleClasses.image} src={memorecall} alt="memorecall" height="60" />
             </AppBar>
             <Grow in>
                 <Container>
