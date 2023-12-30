@@ -14,7 +14,7 @@ const Post = ({ post }) => {
             <CardMedia className={styleClasses.media} image={post.selectedFile} title={post.title} />
             <div className={styleClasses.overlay}>
                 <Typography variant="h6">{post.creator}</Typography>
-                <Typography variant="body2">{moment(post.createdAt).fromNow}</Typography>
+                <Typography variant="body2">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={styleClasses.overlay2}>
                 <Button style={{color: 'white'}} size="small" onClick={() => {}}>
