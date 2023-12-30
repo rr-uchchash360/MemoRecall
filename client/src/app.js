@@ -20,14 +20,14 @@ const App = () => {
     return (
         <Container maxWidth="lg">
             <AppBar className={styleClasses.appBar} position="static" color="inherit">
-                <Typography classname={styleClasses.heading} varaint="h2" aligh="center">
+                <Typography className={styleClasses.heading} varaint="h2" aligh="center">
                     MemoRecall
                 </Typography>
                 <img className={styleClasses.image} src={memorecall} alt="memorecall" height="60" />
             </AppBar>
             <Grow in>
                 <Container>
-                    <Grid container justify= "space-between" alignItems="stretch" spacing={3}>
+                    <Grid container justifyContent= "space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={7}>
                             <Posts />
                         </Grid>
