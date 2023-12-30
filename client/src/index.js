@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { legacy_createStore as createStore, applyMiddleware, compose } from 'redux';
 import reducers from './reducers';
 import App from './app';
+import './index.css';
 
 // Custom middleware to handle async actions
 const asyncMiddleware = ({ dispatch }) => next => action => {
