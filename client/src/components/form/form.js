@@ -1,19 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import useStyles from './formStyles';
 import { TextField, Button, Typography, Paper } from '@material-ui/core';
 import FileBase from 'react-file-base64';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { createPost } from "../../api";
-import { createPost } from '../../actions/posts'
+import { createPost, updatePost } from '../../actions/posts';
 
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
     const styleClasses = useStyles();
     const dispatch = useDispatch();
+    const posts = useSelector((state) => state.posts); // Assuming you meant to select 'posts' from the Redux state.
+
+    const post = currentId ? posts.find((p) => p._id === currentId) : null;
+
+    useEffect(() => {
+        if (post) setPostData(post);
+    }, [post]);
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Use e.preventDefault() instead of e.preventDefaults()
-    
-        dispatch(createPost(postData));
+
+        if (currentId) {
+            dispatch(updatePost(currentId, postData));
+        } else {
+            dispatch(createPost(postData));
+        }
     }
 
     const clear = () => {
