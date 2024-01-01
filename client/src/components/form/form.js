@@ -9,13 +9,12 @@ import { createPost, updatePost } from '../../actions/posts';
 const Form = ({ currentId, setCurrentId }) => {
     const styleClasses = useStyles();
     const dispatch = useDispatch();
-    const posts = useSelector((state) => state.posts); // Assuming you meant to select 'posts' from the Redux state.
-
-    const post = currentId ? posts.find((p) => p._id === currentId) : null;
+    const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id === currentId) : null));
 
     useEffect(() => {
-        if (post) setPostData(post);
+        if(post) setPostData(post);
     }, [post]);
+
 
     const handleSubmit = (e) => {
         e.preventDefault(); // Use e.preventDefault() instead of e.preventDefaults()
