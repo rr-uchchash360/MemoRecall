@@ -24,10 +24,13 @@ const Form = ({ currentId, setCurrentId }) => {
         } else {
             dispatch(createPost(postData));
         }
+
+        clear();
     }
 
     const clear = () => {
-         
+        setCurrentId(null);
+        setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
     }
 
     const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
@@ -35,7 +38,7 @@ const Form = ({ currentId, setCurrentId }) => {
     return (
         <Paper className={styleClasses.paper}>
             <form autoComplete="off" noValidate className={`${styleClasses.root} ${styleClasses.form}`} onSubmit={handleSubmit}>
-            <Typography variant="h6"> Create your Memory</Typography>
+            <Typography variant="h6"> { currentId ? 'Edit' :  'Create' } your Memory</Typography>
             <TextField
                 id="creator"
                 name="creator"
